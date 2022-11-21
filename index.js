@@ -6,15 +6,8 @@ const app = express();
 const port = 9002;
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(cors())
 
-app.use(cors());
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-    next(); 
-})
-next(); 
 mongoose.connect("mongodb+srv://ved2805:ihatemongo@cluster0.0ogxf3e.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
