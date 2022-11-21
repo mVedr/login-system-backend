@@ -64,6 +64,10 @@ app.post("/register", (req, res)=> {
 app.get("/",(req,res)=>{
     res.send("get is working")
 })
+app.post("/p", (req, res) => {
+    // perform operation and return response.
+    res.status(200).json({ message: "It worked!" });
+  });
 app.listen(port,() => {
     console.log("BE started at port")
 })
