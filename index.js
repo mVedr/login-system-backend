@@ -4,20 +4,15 @@ import mongoose from "mongoose"
 
 const app = express();
 const port = 9002;
-
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-}
-app.configure(function() {
-    app.use(allowCrossDomain);
-    //some other code
-    app.use(express.json())
+app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
-});    
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
+})
 mongoose.connect("mongodb+srv://ved2805:ihatemongo@cluster0.0ogxf3e.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
