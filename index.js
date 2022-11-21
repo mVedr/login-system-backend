@@ -61,7 +61,9 @@ app.post("/register", (req, res)=> {
     })
     
 }) 
-app.get("/",()=>{})
+app.get("/",(req,res)=>{
+    res.send("get is working")
+})
 app.listen(port,() => {
     console.log("BE started at port")
 })
