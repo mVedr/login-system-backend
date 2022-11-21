@@ -64,6 +64,6 @@ app.post("/register", (req, res)=> {
 app.get("/",(req,res)=>{
     res.send("Hello There")
 })
-app.listen(port,() => {
+app.listen(process.env.PORT ,() => {
     console.log("BE started at port")
 })
